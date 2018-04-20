@@ -60,34 +60,36 @@ install_system_apps(){
         package_install "termite"
         package_install "thunar-archive-plugin"
         package_install "thunar-volman"
-    sudo pacman -S arandr --noconfirm --needed
-    sudo pacman -S awesome-terminal-fonts --noconfirm --needed
-    sudo pacman -S compton  --noconfirm --needed
-    sudo pacman -S dmenu  --noconfirm --needed
-    sudo pacman -S feh --noconfirm --needed
-    sudo pacman -S gmrun --noconfirm --needed
-    sudo pacman -S gsimplecal --noconfirm --needed
-    sudo pacman -S imagemagick --noconfirm --needed
-    sudo pacman -S lxappearance --noconfirm --needed
-    sudo pacman -S lxrandr --noconfirm --needed
-    sudo pacman -S nitrogen --noconfirm --needed
-    sudo pacman -S oblogout --noconfirm --needed
-    sudo pacman -S obconf --noconfirm --needed
-    sudo pacman -S qt4 --noconfirm --needed
-    sudo pacman -S rofi --noconfirm --needed
-    sudo pacman -S thunar --noconfirm --needed
-    sudo pacman -S tint2 --noconfirm --needed
-    sudo pacman -S slim --noconfirm --needed
-    sudo pacman -S volumeicon  --noconfirm --needed
-    sudo pacman -S w3m  --noconfirm --needed
-    sudo pacman -S xorg-xrandr --noconfirm --needed
-    sudo pacman -S xfce4-appfinder --noconfirm --needed
-    sudo pacman -S xfce4-notifyd --noconfirm --needed
-    sudo pacman -S xfce4-power-manager --noconfirm --needed
-    sudo pacman -S xfce4-settings --noconfirm --needed
-    sudo pacman -S xfce4-screenshooter --noconfirm --needed
-    sudo pacman -S xfce4-taskmanager --noconfirm --needed
+    
+        #sh AUR/install-caffeine-ng-v*.sh
+        aur_package_install "conky-lua-archers"
+        aur_package_install "cool-retro-term"
+        aur_package_install "discord"
+        aur_package_install "mintstick-git"
+        aur_package_install "temps"
+    
+        aur_package_install "arc-gtk-theme-git"
+        aur_package_install "conky-aureola"
+        aur_package_install "downgrade"
+        aur_package_install "inxi"
+        aur_package_install "neofetch"
+        aur_package_install "numix-circle-icon-theme-git"
+        aur_package_install "pamac-aur"
+        aur_package_install "paper-icon-theme-git"
+        aur_package_install "papirus-icon-theme-git"
+        aur_package_install "sardi-icons"
+        aur_package_install "sardi-extra-icons"
+        aur_package_install "screenkey"
+        aur_package_install "surfn-icons-git"
+
+        aur_package_install "ttf-font-awesome"
+        aur_package_install "ttf-mac-fonts"
+        aur_package_install "virtualbox-for-linux-kernel"
+        aur_package_install "xcursor-breeze"
+    
 
     echo "################################################################"
     echo "####    Software from Arch Linux Repository installed     ######"
     echo "################################################################"
+    }
+ #}}}
