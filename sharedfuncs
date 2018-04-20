@@ -187,7 +187,7 @@
       error_msg "ERROR! Domain name is not configured."
     fi
   } #}}}
-  check_script(){ #{{{
+  load_script(){ #{{{
 	 if [[ -f `pwd`/$1 ]]; then
 	  source $1
 	else
