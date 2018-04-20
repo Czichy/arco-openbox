@@ -30,7 +30,8 @@ check_script "110-install-sound"
 check_script "130-install-printers"
 check_script "140-install-samba"
 check_script "200-install-system-tools"
-check_script "700-installing-fonts"
+check_script "600-install-Arco"
+check_script "700-install-fonts"
 
 
 #if [[ -f `pwd`/100-display-manager-and-desktop ]]; then
@@ -1261,7 +1262,8 @@ automatic_mode
 
         #install_web_server
         #checklist[12]=1
-
+        
+        install_arcolinux
         install_fonts
         checklist[13]=1
 
