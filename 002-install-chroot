@@ -30,6 +30,7 @@ check_script "110-install-sound"
 check_script "130-install-printers"
 check_script "140-install-samba"
 check_script "200-install-system-tools"
+check_script "700-installing-fonts"
 
 
 #if [[ -f `pwd`/100-display-manager-and-desktop ]]; then
@@ -1027,74 +1028,6 @@ install_web_server(){
       configure_php "postgresql"
       ;;
   esac
-}
-#}}}
-#FONTS {{{
-install_fonts(){
-  while true
-  do
-    print_title "FONTS - https://wiki.archlinux.org/index.php/Fonts"
-    echo " 1) $(menu_item "ttf-dejavu")"
-    echo " 2) $(menu_item "ttf-fira-code") $AUR"
-    echo " 3) $(menu_item "ttf-google-fonts-git") $AUR"
-    echo " 4) $(menu_item "ttf-liberation")"
-    echo " 5) $(menu_item "ttf-bitstream-vera")"
-    echo " 6) $(menu_item "ttf-hack")"
-    echo " 7) $(menu_item "ttf-mac-fonts") $AUR"
-    echo " 8) $(menu_item "ttf-ms-fonts") $AUR"
-    echo " 9) $(menu_item "wqy-microhei") (Chinese/Japanese/Korean Support)"
-    echo "10) $(menu_item "noto-fonts-cjk") (Chinese/Japanese/Korean Support)"
-    echo ""
-    echo " b) BACK"
-    echo ""
-    FONTS_OPTIONS+=" b"
-    read_input_options "$FONTS_OPTIONS"
-    for OPT in ${OPTIONS[@]}; do
-      case "$OPT" in
-        1)
-          package_install "ttf-dejavu"
-          ;;
-        2)
-          aur_package_install "ttf-fira-code"
-          ;;
-        3)
-          package_remove "ttf-droid"
-          package_remove "ttf-roboto"
-          package_remove "ttf-ubuntu-font-family"
-          package_remove "otf-oswald-ib"
-          aur_package_install "ttf-google-fonts-git"
-          ;;
-        4)
-          package_install "ttf-liberation"
-          ;;
-        5)
-          package_install "ttf-bitstream-vera"
-          ;;
-        6)
-          package_install "ttf-hack"
-          ;;
-        7)
-          aur_package_install "ttf-mac-fonts"
-          ;;
-        8)
-          aur_package_install "ttf-ms-fonts"
-          ;;
-        9)
-          package_install "wqy-microhei"
-          ;;
-        10)
-          package_install "noto-fonts-cjk"
-          ;;
-        "b")
-          break
-          ;;
-        *)
-          invalid_option
-          ;;
-      esac
-    done
-    source sharedfuncs_elihw
-  done
 }
 #}}}
 #IME INPUT TOOLS {{{
