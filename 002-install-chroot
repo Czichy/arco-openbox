@@ -25,13 +25,13 @@ else
   exit 1
 fi
 
-check_script "100-display-manager-and-desktop"
-check_script "110-install-sound"
-check_script "130-install-printers"
-check_script "140-install-samba"
-check_script "200-install-system-tools"
-check_script "600-install-Arco"
-check_script "700-install-fonts"
+load_script "100-display-manager-and-desktop"
+load_script "110-install-sound"
+load_script "130-install-printers"
+load_script "140-install-samba"
+load_script "200-install-system-tools"
+load_script "600-install-Arco"
+load_script "700-install-fonts"
 
 
 #if [[ -f `pwd`/100-display-manager-and-desktop ]]; then
