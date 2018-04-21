@@ -31,36 +31,7 @@ load_script "130-install-printers"
 load_script "140-install-samba"
 load_script "200-install-system-tools"
 load_script "600-install-Arco"
-load_script "700-install-fonts"
-
-
-#if [[ -f `pwd`/100-display-manager-and-desktop ]]; then
-#  source 100-display-manager-and-desktop
-#else
-#  echo "missing file: 100-display-manager-and-desktop"
-#  exit 1
-#fi
-
-#if [[ -f `pwd`/110-install-sound ]]; then
-#  source 110-install-sound
-#else
-#  echo "missing file: 110-install-sound"
-#  exit 1
-#fi
-
-#if [[ -f `pwd`/130-install-printers ]]; then
-#  source 130-install-printers
-#else
-#  echo "missing file: 130-install-printers"
-#  exit 1
-#fi
-
-#if [[ -f `pwd`/140-install-samba ]]; then
-#  source 140-install-samba
-#else
-#  echo "missing file: 140-install-samba"
-#  exit 1
-#fi
+load_script "700-installing-fonts"
 
 
 
@@ -627,47 +598,6 @@ install_additional_firmwares(){
     done
 }
 #}}}
-#DESKTOP ENVIRONMENT {{{
-install_desktop_environment(){
-  install_icon_theme() { #{{{
-    while true
-    do
-      print_title "GNOME ICONS"
-      echo " 1) $(menu_item "numix-icon-theme-git") $AUR"
-      echo " 2) $(menu_item "arc-icon-theme")"
-      echo ""
-      echo " b) BACK"
-      echo ""
-      ICONS_THEMES+=" b"
-      read_input_options "$ICONS_THEMES"
-      for OPT in ${OPTIONS[@]}; do
-        case "$OPT" in
-          1)
-            aur_package_install "numix-icon-theme-git numix-circle-icon-theme-git"
-            ;;
-          2)
-            aur_package_install "moka-icon-theme-git"
-            package_install "arc-icon-theme"
-            ;;
-          "b")
-            break
-            ;;
-          *)
-            invalid_option
-            ;;
-        esac
-      done
-      source sharedfuncs_elihw
-    done
-  } #}}}
-  install_gtk_theme() { #{{{
-      print_title "GTK2/GTK3 THEMES"
-            package_install "arc-gtk-theme"
-            git clone https://github.com/Czichy/gtk-theme-collections ~/.themes
-      #source sharedfuncs_elihw
-  } #}}}
-  
-#}}}
 #CONNMAN/NETWORKMANAGER/WICD {{{
 install_nm_wicd(){
   print_title "NETWORK MANAGER"
@@ -1231,7 +1161,7 @@ automatic_mode
         install_additional_firmwares
         checklist[1]=1
   #Desktop Environment|Window Manager
-        install_desktop_environment
+        install_display_manager
         install_nm_wicd
         install_usb_modem
         checklist[2]=1

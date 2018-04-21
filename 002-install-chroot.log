@@ -1,0 +1,32 @@
+ [1m[34m[[m[1mX[1m[34m][m Installing ([1m[31mcore[m) [1mbase-devel[m   :: There are 26 members in group base-devel:
+:: Repository core
+   1) autoconf  2) automake  3) binutils  4) bison  5) fakeroot  6) file  7) findutils  8) flex  9) gawk  10) gcc  11) gettext  12) grep  13) groff  14) gzip  15) libtool  16) m4  17) make  18) pacman  19) patch  20) pkg-config  21) sed  22) sudo  23) systemd  24) texinfo  25) util-linux  26) which
+
+Enter a selection (default=all): warning: autoconf-2.69-4 is up to date -- skipping
+warning: automake-1.15.1-1 is up to date -- skipping
+warning: binutils-2.29.1-3 is up to date -- skipping
+warning: bison-3.0.4-3 is up to date -- skipping
+warning: fakeroot-1.22-1 is up to date -- skipping
+warning: file-5.32-1 is up to date -- skipping
+warning: findutils-4.6.0-2 is up to date -- skipping
+warning: flex-2.6.4-1 is up to date -- skipping
+warning: gawk-4.2.1-1 is up to date -- skipping
+warning: gcc-7.3.1+20180312-2 is up to date -- skipping
+warning: gettext-0.19.8.1-2 is up to date -- skipping
+warning: grep-3.1-1 is up to date -- skipping
+warning: groff-1.22.3-7 is up to date -- skipping
+warning: gzip-1.9-1 is up to date -- skipping
+warning: libtool-2.4.6+40+g6ca5e224-5 is up to date -- skipping
+warning: m4-1.4.18-1 is up to date -- skipping
+warning: make-4.2.1-2 is up to date -- skipping
+warning: pacman-5.0.2-2 is up to date -- skipping
+warning: patch-2.7.6-1 is up to date -- skipping
+warning: pkg-config-0.29.2-1 is up to date -- skipping
+warning: sed-4.5-1 is up to date -- skipping
+warning: sudo-1.8.22-1 is up to date -- skipping
+warning: systemd-238.76-1 is up to date -- skipping
+warning: texinfo-6.5-1 is up to date -- skipping
+warning: util-linux-2.32-3 is up to date -- skipping
+warning: which-2.21-2 is up to date -- skipping
+
+ there is nothing to do

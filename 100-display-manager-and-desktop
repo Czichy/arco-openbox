@@ -5,8 +5,6 @@ set -e
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
-sudo systemctl enable lightdm.service -f
-sudo systemctl set-default graphical.target
 
 if [[ -f `pwd`/sharedfuncs ]]; then
   source sharedfuncs
@@ -15,18 +13,7 @@ else
   exit 1
 fi
 
-install_display_manager() { #{{{
-      print_title "DISPLAY MANAGER - https://wiki.archlinux.org/index.php/Display_Manager"
-      print_info "A display manager, or login manager, is a graphical interface screen that is displayed at the end of the boot process in place of the default shell."
 
-      package_install "lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings"
-      #system_ctl enable lightdm
-      sudo systemctl enable lightdm.service -f
-      sudo systemctl set-default graphical.target
-  } #}}}
-  install_themes() { #{{{
-    
-  } #}}}
   install_misc_apps() { #{{{
       print_title "$1 ESSENTIAL APPS"
             install_display_manager
@@ -64,6 +51,17 @@ install_display_manager() { #{{{
             aur_package_install "yad"
   } #}}}
 
+install_display_manager() { #{{{
+      print_title "DISPLAY MANAGER - https://wiki.archlinux.org/index.php/Display_Manager"
+      print_info "A display manager, or login manager, is a graphical interface screen that is displayed at the end of the boot process in place of the default shell."
+
+      package_install "lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings"
+      #system_ctl enable lightdm
+      sudo systemctl enable lightdm.service -f
+      sudo systemctl set-default graphical.target
+
+
+
   print_title "DESKTOP ENVIRONMENT|WINDOW MANAGER"
   print_info "A DE provide a complete GUI for a system by bundling together a variety of X clients written using a common widget toolkit and set of libraries.\n\nA window manager is one component of a system's graphical user interface."
 
@@ -78,7 +76,7 @@ install_display_manager() { #{{{
       # distro specific
       aur_pachage_install "i3blocks"
       #}}}
-    13)
+   # 13)
       #OPENBOX {{{
       print_title "OPENBOX - http://wiki.archlinux.org/index.php/Openbox"
       print_info "Openbox is a lightweight and highly configurable window manager with extensive standards support."
@@ -131,7 +129,7 @@ sudo pacman -S xfce4-screenshooter --noconfirm --needed
 sudo pacman -S xfce4-taskmanager --noconfirm --needed
       
       install_misc_apps "OPENBOX"
-      install_themes "OPENBOX"
+      
       #}}}
   #COMMON PKGS {{{
     #MTP SUPPORT {{{
