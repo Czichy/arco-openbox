@@ -764,7 +764,7 @@ install_office_apps(){
           package_install "gcstar"
           aur_package_install "geeknote-git"
           aur_package_install "haroopad"
-          package_install "homebank"
+          #package_install "homebank"
           package_install "impressive"
           package_install "texlive-most"
           if [[ ${KDE} -eq 0 ]]; then
