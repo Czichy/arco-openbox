@@ -33,8 +33,6 @@ load_script "200-install-system-tools"
 load_script "600-install-Arco"
 load_script "700-installing-fonts"
 
-
-
 #ARCHLINUX U INSTALL {{{
 #1 - WELCOME {{{
 welcome(){
@@ -1018,41 +1016,6 @@ clean_orphan_packages(){
   pacman-optimize
 }
 #}}}
-#RECONFIGURE SYSTEM {{{
-reconfigure_system(){
-  print_title "HOSTNAME - https://wiki.archlinux.org/index.php/HOSTNAME"
-  print_info "A host name is a unique name created to identify a machine on a network.Host names are restricted to alphanumeric characters.\nThe hyphen (-) can be used, but a host name cannot start or end with it. Length is restricted to 63 characters."
-  read -p "Hostname [ex: archlinux]: " HN
-  hostnamectl set-hostname $HN
-
-  print_title "TIMEZONE - https://wiki.archlinux.org/index.php/Timezone"
-  print_info "In an operating system the time (clock) is determined by four parts: Time value, Time standard, Time Zone, and DST (Daylight Saving Time if applicable)."
-  OPTION=n
-  while [[ $OPTION != y ]]; do
-    settimezone
-    read_input_text "Confirm timezone ($ZONE/$SUBZONE)"
-  done
-  timedatectl set-timezone ${ZONE}/${SUBZONE}
-
-  print_title "HARDWARE CLOCK TIME - https://wiki.archlinux.org/index.php/Internationalization"
-  print_info "This is set in /etc/adjtime. Set the hardware clock mode uniformly between your operating systems on the same machine. Otherwise, they will overwrite the time and cause clock shifts (which can cause time drift correction to be miscalibrated)."
-  hwclock_list=('UTC' 'Localtime');
-  PS3="$prompt1"
-  select OPT in "${hwclock_list[@]}"; do
-    case "$REPLY" in
-      1)
-        timedatectl set-local-rtc false
-        ;;
-      2)
-        timedatectl set-local-rtc true
-        ;;
-      *) invalid_option ;;
-    esac
-    [[ -n $OPT ]] && break
-  done
-  timedatectl set-ntp true
-}
-#}}}
 #EXTRA {{{
 install_extra(){
   while true
@@ -1127,7 +1090,6 @@ language_selector
 configure_sudo
 select_user
 choose_aurhelper
-automatic_mode
 
   print_title "ARCHLINUX INSTALL - https://github.com/helmuthdu/aui"
   print_warning "USERNAME: ${username}"
@@ -1141,13 +1103,10 @@ automatic_mode
   echo " 8) $(mainmenu_item "${checklist[8]}" "Internet Apps")"
   echo " 9) $(mainmenu_item "${checklist[9]}" "Audio Apps")"
   echo "10) $(mainmenu_item "${checklist[10]}" "Video Apps")"
-  echo "11) $(mainmenu_item "${checklist[11]}" "Games")"
-  echo "12) $(mainmenu_item "${checklist[12]}" "Web server")"
-  echo "13) $(mainmenu_item "${checklist[13]}" "Fonts")"
-  echo "14) $(mainmenu_item "${checklist[14]}" "International script input: M17n based IME")"
-  echo "15) $(mainmenu_item "${checklist[15]}" "Extra")"
-  echo "16) $(mainmenu_item "${checklist[16]}" "Clean Orphan Packages")"
-  echo "17) $(mainmenu_item "${checklist[17]}" "Reconfigure System")"
+  echo "11) $(mainmenu_item "${checklist[13]}" "Fonts")"
+  echo "12) $(mainmenu_item "${checklist[14]}" "International script input: M17n based IME")"
+  echo "13) $(mainmenu_item "${checklist[15]}" "Extra")"
+  echo "14) $(mainmenu_item "${checklist[16]}" "Clean Orphan Packages")"
   #Basic Setup
         add_custom_repositories
         install_basic_setup
@@ -1194,20 +1153,17 @@ automatic_mode
 
         install_video_apps
         checklist[10]=1
-
-        #install_web_server
-        #checklist[12]=1
         
         install_arcolinux
         install_fonts
-        checklist[13]=1
+        checklist[11]=1
 
         choose_ime_m17n
-        checklist[14]=1
+        checklist[12]=1
 
         install_extra
-        checklist[15]=1
+        checklist[13]=1
 
         clean_orphan_packages
-        checklist[16]=1
+        checklist[14]=1
 #}}}
